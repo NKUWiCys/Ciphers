@@ -1,0 +1,37 @@
+def ceasarEncrypt(text, key):
+    # Write a ceasar cipher
+
+        
+        # checks if the character is a letter
+
+            # checks if uppercase
+
+            
+            
+            #  Shift the character by the key value and add to the ASCII value of A or B (offset)
+       
+            
+    return cipherText
+
+def ceasarDecrypt(cipherText, key):
+# Write a function to decrypt the above cipher using Ceasar Cipher algorithm
+        
+   
+            
+    return plainText
+
+
+if __name__ =="__main__":
+    
+    
+        # getting text to encrypt
+
+        # setting encryption key
+        
+        # Calling the function
+        
+        # Getting the ciphered text from user
+        
+        # setting decryption key
+
+        # Calling the function
