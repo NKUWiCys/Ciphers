@@ -1,5 +1,5 @@
-def ceasarEncrypt(text, key):
-    # Write a ceasar cipher
+def caesarEncrypt(text, key):
+    # Write a caesar cipher
 
         
         # checks if the character is a letter
@@ -13,8 +13,8 @@ def ceasarEncrypt(text, key):
             
     return cipherText
 
-def ceasarDecrypt(cipherText, key):
-# Write a function to decrypt the above cipher using Ceasar Cipher algorithm
+def caesarDecrypt(cipherText, key):
+# Write a function to decrypt the above cipher using Caesar Cipher algorithm
         
    
             
