@@ -41,7 +41,7 @@ Skip / say no to rest of prompts
 
 4. Apply environment
 Make sure you are in the same directory
-> poetry update package
+> poetry update package 
 
 5. Use poetry to run your code
 Make sure you are still in the same directory
