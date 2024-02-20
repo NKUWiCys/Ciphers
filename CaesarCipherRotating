@@ -1,1 +1,61 @@
+# Coding demonstration for WiCys on the caesar cipher
 
+def caesarEncrypt(text, key):
+    # Write a caesar cipher
+    cipherText = ""
+    for char in text:
+        
+        if char.isalpha():
+        # checks if the character is a letter
+            if char.isupper():
+            # checks if uppercase
+                offset = 65 
+            else:
+                offset = 97
+            
+            #  Shift the character by the key value and add to the ASCII value of A or B (offset)
+            cipherText += chr((ord(char) - offset + key) %  26 + offset)
+        else:
+            cipherText += char
+            
+    return cipherText
+
+def caesarDecrypt(cipherText, key):
+# Write a function to decrypt the above cipher using caesar Cipher algorithm
+        
+    plainText = ""
+    
+    for char in cipherText:
+        if char.isalpha():
+            
+            if char.isupper():
+                offset = 65 
+            else:
+                offset = 97            
+            
+            plainText += chr((ord(char) - offset - key) %  26 + offset)
+        else:
+            plainText += char
+            
+    return plainText
+
+
+if __name__ =="__main__":
+    
+    choice = int(input("\n\nWelcome to WiCy's Cipher Tool!\nPlease select an option:\n1. Ceaser Cipher Encryption\n2. Ceaser Cipher Decryption\n3. Exit\n"))
+    
+    if choice == 1:
+        # getting text to encrypt
+        text = input("Enter your message to be encrypted: ")
+        
+        encryptKey = int(input("Enter the shift key: "))
+        
+        # Calling the function
+        print(caesarEncrypt(text, encryptKey))
+        
+    elif  choice == 2:
+        # Getting the ciphered text from user
+        cipherText = input("Enter the ciphered message: ")
+        decryptKey = int(input("Enter the shift key: "))
+        
+        print(caesarDecrypt(cipherText, decryptKey))
