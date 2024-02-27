@@ -1,37 +1,45 @@
-# Coding demo for WiCys
+# coding demonstration for WiCys on cryptography libraries
 
+# importing the libraries
 import os
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import padding
 
-if __name__ == "__main__":
-    print("Welcome to the WiCys 2024 coding demo!")
+if __name__ ==  "__main__":
+    print("Welcome to the WiCys Cryptography Libraries Demonstration!")
     text = input("Enter a message to encrypt: ")
-
-    # Step 1: Create a key
-    # AES supports 32, 48, and 64 byte keys
     
-
-    # Step 2: Create an initialization vector
-
-  
-    # Step 3: Create a cipher object
+    # step 1: create a key
+    #AES supports 32,  64 or 128 bytes keys
+    key = os.urandom(32)
     
-
-    # Step 4: Create an encryptor object
-   
-
-    # Step 5: Create a decryptor object
-   
-
-    # Step 6: Create a padding object 
+    # step2: create an initialization vector
+    iv = os.urandom(16)
     
-
-    # Step 7: Pad the text - data needs to be a multiple of 16 bytes
-
-  
-    # Step 8: Encrypt the padded text
-  
-
-    # Step 9: Decrypt the ciphertext
-   
+    # step 3: create a cipher object
+    cipher = Cipher(algorithms.AES(key), modes.CTR(iv))
+    
+    # step 4: create an encryptor object
+    encryptor = cipher.encryptor()
+    
+    # step 5: create a decryptor object
+    decryptor = cipher.decryptor()
+    
+    # step 6: create a padding object - needs to be a multiple of 16 bytes
+    padder = padding.PKCS7(128).padder()
+    unpadder  = padding.PKCS7(128).unpadder()
+    
+    # step 7: pad the data
+    paddedText = padder.update(text.encode()) + padder.finalize()
+    
+    # step 8: encrypt the text
+    ciphertext = encryptor.update(paddedText) + encryptor.finalize()
+    print("Encrypting....")
+    print("Encrypted text: " + str(ciphertext))
+    
+    # step 9: decrypt the text
+    print("Decrypting....")
+    decryptedText = decryptor.update(ciphertext) + decryptor.finalize()
+    text = unpadder.update(decryptedText) + unpadder.finalize()
+    print("Decrypted text: " + text.decode())
+    
